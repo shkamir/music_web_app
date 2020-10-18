@@ -5,7 +5,7 @@
 
 
 #TODO
-[] - in models make the fields visible in templates
-[] - make id urls 
-[] - make musics downloadable
+ - in models make the fields visible in templates
+ - make id urls 
+ - make musics downloadable
 
