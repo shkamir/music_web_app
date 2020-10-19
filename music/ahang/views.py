@@ -3,7 +3,7 @@ from .models import Ahang
 
 
 def index(request):
-    ahangha = Ahang.objects.all()
+    ahangha = Ahang.objects.all().order_by('-updateDate')
     context = {
         "ahangha": ahangha,
     }
