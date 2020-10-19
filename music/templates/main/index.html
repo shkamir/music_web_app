@@ -9,10 +9,12 @@
     <title>Document</title>
 </head>
 <body>
+{% for ahang in ahangha %}
 <ul class="list-group">
-  <li class="list-group-item">author</li>
-  <li class="list-group-item">desc</li>
+    <li class="list-group-item">{{ahang.author}}</li>
+    <li class="list-group-item">{{ahang.description|safe|truncatechars_html:120}}</li>
   <li class="list-group-item">link</li>
 </ul>
+{% endfor %}
 </body>
 </html>

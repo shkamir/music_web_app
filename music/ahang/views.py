@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import Ahang
 
-# Create your views here.
+
 def index(request):
-    return render(request, 'main/index.html')
+    ahangha = Ahang.objects.all()
+    context = {
+        "ahangha": ahangha,
+    }
+    return render(request, 'main/index.html', context)
