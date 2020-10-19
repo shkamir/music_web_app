@@ -1,5 +1,6 @@
 {% extends 'main/index.html' %}
 {% block content %}
+
 <div class="container-lg bg-dark text-white-50">
 <center>
     <h1>{{ahang.author}}-{{ahang.ahang_esm}}</h1>
@@ -7,12 +8,19 @@
     <hr / class="badge-primary col-sm-5">   
     <h4>{{ahang.description|safe}}
     <br/>
-    <audio controls>
-        <label>
-            {{ahang.ahang_file}}
-        </label>
+    <p></p>
+
+    <div class="containter-fluid">
+       <audio controls="controls">
         <source src="{{ahang.ahang_file.url}}">
+        مرورگر شما از موسیقی پشتیبانی نمیکند یک مرورگر بهتر بگیرید :)
     </audio>
+    <p></p>
+    <a href={{ahang.ahang_file.url}} target="_blank" class="nav-link active">
+        برای دانلود کلیک کنید
+    </a>
+    </div>
+    <br />
 </center>
 </div>
 {% endblock %}
