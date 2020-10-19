@@ -6,5 +6,8 @@
 
 #TODO
 
-- login is required t odownload the music
+- login is required to download the music
+- i want the users to upload music through a form or something
+- make this ugly pages look nice :/
+
 
