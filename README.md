@@ -5,7 +5,7 @@
 
 
 # TODO
-- in models make the fields visible in templates
+- in models make the fields visible in templates - DONE
 - make id urls 
 - make musics downloadable
 
