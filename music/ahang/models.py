@@ -9,11 +9,11 @@ class Ahang(models.Model):
     ahang_file = models.FileField(upload_to='Musics/', null=False, blank=False)
     publishDate = models.DateField(auto_now_add=True)
     updateDate = models.DateField(auto_now=True)
-    
+
     def get_absolute_url(self):
-        return reverse("music:detail", args=[str(self.id)])
+        return reverse("music:detail", args=[str(self.id),self.ahang_esm])
 
     class Meta:
         verbose_name = 'Music'
         verbose_name_plural = "Music's"
-        
+
