@@ -11,4 +11,4 @@ def index(request):
 
 def ahang_detail(request, id=None):
     ahang = get_object_or_404(Ahang, id=id)
-    return render(request,'ahang_detail.html', {"ahang":ahang})
+    return render(request,'main/ahang_detail.html', {"ahang":ahang})
