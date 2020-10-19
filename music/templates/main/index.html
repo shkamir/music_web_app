@@ -10,13 +10,16 @@
 </head>
 <body>
 {% block content %}
+<div class="container-fluid bg-primary">
 {% for ahang in ahangha %}
-<ul class="list-group">
-    <li class="list-group-item">{{ahang.author}}</li>
-    <li class="list-group-item">{{ahang.description|safe|truncatechars_html:120}}</li>
-  <li class="list-group-item"><a href="{{ahang.get_absolute_url}}"> ادامه مطلب </a></li>
+<ul class="list-group text-secondry">
+    <li class="list-group-item text-center text-white bg-dark">{{ahang.author}}</li>
+    <li class="list-group-item text-center text-white bg-dark">{{ahang.description|safe|truncatechars_html:120}}</li>
+    <li class="list-group-item text-center text-white bg-dark"><a href="{{ahang.get_absolute_url}}"> ادامه مطلب </a></li>
 </ul>
+<br />
 {% endfor %}
+</div>
 {% endblock %}
 </body>
 </html>
