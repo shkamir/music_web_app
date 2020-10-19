@@ -4,8 +4,7 @@
 #### i dont know why i uploaded the database :) just ignore that :D
 
 
-# TODO
-- in models make the fields visible in templates - DONE
-- make id urls 
-- make musics downloadable
+#TODO
+
+- login is required t odownload the music
 
