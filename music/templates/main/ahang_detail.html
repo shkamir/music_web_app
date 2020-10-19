@@ -1,0 +1,18 @@
+{% extends 'main/index.html' %}
+{% block content %}
+<div class="container-lg bg-dark text-white-50">
+<center>
+    <h1>{{ahang.author}}-{{ahang.ahang_esm}}</h1>
+    <h2>{{ahang.updateDate|linebreaks}}</h2>
+    <hr / class="badge-primary col-sm-5">   
+    <h4>{{ahang.description|safe}}
+    <br/>
+    <audio controls>
+        <label>
+            {{ahang.ahang_file}}
+        </label>
+        <source src="{{ahang.ahang_file.url}}">
+    </audio>
+</center>
+</div>
+{% endblock %}
