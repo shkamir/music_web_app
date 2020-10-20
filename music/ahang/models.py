@@ -11,7 +11,7 @@ class Ahang(models.Model):
     updateDate = models.DateField(auto_now=True)
 
     def get_absolute_url(self):
-        return reverse("music:detail", args=[str(self.id),self.ahang_esm])
+        return reverse("music:detail", args=[str(self.id)])
 
     class Meta:
         verbose_name = 'Music'
