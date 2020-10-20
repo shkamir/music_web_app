@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Ahang
+from .models import Ahang, CommentDb
 
 
 def index(request):
@@ -13,6 +13,13 @@ def index(request):
 def ahang_detail(request,id=None):
     ahang = get_object_or_404(Ahang,id=id)
     esme_ahang = f"{ahang.author}\t-\t{ahang.ahang_esm}"
+    
+    # comment's
+    if request.method == "POST":
+        nazar = request.POST.get("cm")
+        CommentDb(comment=nazar).save()
+        #print (request.POST.get("cm"))
+        
     context = {
          "ahang":ahang, 
          "title":esme_ahang

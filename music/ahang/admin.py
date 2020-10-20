@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Ahang
+from .models import Ahang, CommentDb
 
 
 class AhangManager(admin.ModelAdmin):
@@ -10,5 +10,14 @@ class AhangManager(admin.ModelAdmin):
     search_fields = ('author','ahang_esm',)
     class Meta:
         model = Ahang
-    #TODO: show these in template 
+  
+class CommentsManager(admin.ModelAdmin):
+    list_display = ('comment','isRead',)
+    list_filter = ('isRead',)
+    search_fields = ('comment',)
+    list_editable = ("isRead",)
+    class Meta:
+        model = CommentDb
+  
 admin.site.register(Ahang, AhangManager)
+admin.site.register(CommentDb, CommentsManager)

@@ -17,3 +17,7 @@ class Ahang(models.Model):
         verbose_name = 'Music'
         verbose_name_plural = "Music's"
 
+class CommentDb(models.Model):
+    # text, is read, date
+    comment = models.TextField()
+    isRead = models.BooleanField(default=False)

@@ -21,13 +21,10 @@
             </div>
             <br>
             <p></p>
-            <form action="{% url 'music:detail' %}" method="post">
+            <form method="post">
                 {% csrf_token %}
-                <label for="cm">
-                    نظر شما
-                </label>
-                <textarea type="text" name="cm" id="cm" class="form-control-range"></textarea>
-                <button type="submit" name="cm" class="btn btn-success">
+                <input type="text" name="cm" id="cm" class="form-control-range" aria-label="نظر شما "></textarea>
+                <button type="submit" class="btn btn-success">
                     ارسال
                 </button>
             </form>
