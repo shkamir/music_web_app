@@ -30,6 +30,23 @@
             </form>
             <p></p>
             <br />
+            <div class="container-fluid">
+                <span>
+                    {% for n in nazarat %}
+                       <p></p>
+                       <br>
+                      <b>{{n.comment}}</b>
+                      {% if n.isRead %}
+                        <small class=btn-success>this comment have been read </small>
+                        {% else %}
+                        <small class="btn-danger">this comment is not seen yet</small>
+                      {% endif %}
+                       <br>
+                       <p></p>
+                       
+                    {% endfor %}
+                </span>
+            </div>
     </center>
 </div>
 {% endblock %}

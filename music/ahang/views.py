@@ -19,9 +19,10 @@ def ahang_detail(request,id=None):
         nazar = request.POST.get("cm")
         CommentDb(comment=nazar).save()
         #print (request.POST.get("cm"))
-        
+    nazarat = CommentDb.objects.all()
     context = {
          "ahang":ahang, 
-         "title":esme_ahang
+         "nazarat": nazarat,
+         "title":esme_ahang,
     }
     return render(request,'main/ahang_detail.html',context)
