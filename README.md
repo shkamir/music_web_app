@@ -6,6 +6,8 @@
 
 #TODO
 
+
+- comments below every music
 - users be able upload music through a form or something without registering
 - make this ugly pages look nice :/
 
