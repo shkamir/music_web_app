@@ -2,6 +2,12 @@
 
 <div class="container-lg bg-dark text-white-50">
     <center>
+{% comment %} showing messages to client if available {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    {% endif %}
         <h1>{{ahang.author}}-{{ahang.ahang_esm}}</h1>
         <h2>{{ahang.updateDate|linebreaks}}</h2>
         <hr class="badge-primary col-sm-5">
@@ -21,9 +27,9 @@
             </div>
             <br>
             <p></p>
-            <form method="post">
+            <form  method="POST">
                 {% csrf_token %}
-                <input type="text" name="cm" id="cm" class="form-control-range" aria-label="نظر شما "></textarea>
+                {{nazar_form}}
                 <button type="submit" class="btn btn-success">
                     ارسال
                 </button>
