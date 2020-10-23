@@ -19,5 +19,7 @@ class Ahang(models.Model):
 
 class CommentDb(models.Model):
     # text, is read, date
+    user_name= models.CharField(max_length=200, default="nUmberX")
     comment = models.TextField()
+    email = models.EmailField(default="example@example.com")
     isRead = models.BooleanField(default=False)
