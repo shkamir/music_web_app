@@ -1,0 +1,25 @@
+{% extends 'main/index.html' %}
+{% block title %}
+آپلود آهنگ     
+{% endblock title %}
+
+{% block content %}
+
+   {% if messages %}
+   {% for m in messages %}
+    <div class="container py-5">  
+    <div class="alert alert-success">  
+    <strong class="text-center text-capitalize">{{m}}</strong>
+    </div>
+    </div>  
+    {% endfor %}
+    {% endif %}
+<div class="container-fluid align-content-center">
+<form action="{% url 'music:upload' %}" method="POST">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="btn btn-lg btn-success">
+    ارسال
+</button>
+</form>
+{% endblock content %}

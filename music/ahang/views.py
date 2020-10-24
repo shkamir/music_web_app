@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Ahang, CommentDb
-from .forms import NazarForm
+from .forms import NazarForm, AhangUplaodingForm
 from django.contrib import messages
 def index(request):
     ahangha = Ahang.objects.all().order_by('-id')
@@ -58,3 +58,19 @@ def ahang_detail(request,id=None):
          "title":esme_ahang,
     }
     return render(request,'main/ahang_detail.html',context)
+
+    
+    
+def upload_music_form(request):
+    form = AhangUplaodingForm()
+    if request.method == "POST":
+        form = AhangUplaodingForm(request.POST or None)
+        if form.is_valid():
+            form.save(commit=False)
+            messages.success(request, "آهنگ شما با موفقیت ثبت شد و پس از بازرسی در سایت قرار میگیرد")
+            form = AhangUplaodingForm()
+        print (form.errors)
+    context = {
+        "form": AhangUplaodingForm
+    }
+    return render(request, "main/upload.html", context)
