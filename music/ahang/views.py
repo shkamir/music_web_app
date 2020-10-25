@@ -59,15 +59,23 @@ def ahang_detail(request,id=None):
 
 
 def upload_music_form(request):
-    form = AhangUplaodingForm()
+    # ISSUE: file not uploading
     if request.method == "POST":
         form = AhangUplaodingForm(request.POST or None)
         if form.is_valid():
-            form.save(commit=False)
+            form.save()
             messages.success(request, "آهنگ شما با موفقیت ثبت شد و پس از بازرسی در سایت قرار میگیرد")
             form = AhangUplaodingForm()
-        print (form.errors)
+            context = {
+                "form": form
+            }
+            return render(request, "main/upload.html", context)
+        context = {
+            "form": form
+        }
+        return render(request, "main/upload.html", context)
+    form = AhangUplaodingForm()
     context = {
-        "form": AhangUplaodingForm
+        "form": form
     }
     return render(request, "main/upload.html", context)

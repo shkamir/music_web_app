@@ -12,6 +12,7 @@ class NazarForm(ModelForm):
         fields = ("comment","user_name", "email",)
         widgets = {"class":"form-control"}
 class AhangUplaodingForm(ModelForm):
+    # ISSUE: file not uploading
     author = forms.CharField(
         label="اسم خواننده",
         label_suffix="",
@@ -42,7 +43,7 @@ class AhangUplaodingForm(ModelForm):
         widget=forms.FileInput(
             attrs={"placeholder":"فایل آهنگ", "class":"form-control-file"}
         ),
-        required=True,
+        required=False,
     )
     class Meta:
         model = Ahang
