@@ -35,17 +35,15 @@ def ahang_detail(request,id=None):
     
     esme_ahang = f"{ahang.author}\t-\t{ahang.ahang_esm}"
     
-    nazar_form = NazarForm()
     
     
-    
+    nazar_form = NazarForm()    
     # saving comments in (_  DB  _) comment's
     if request.method == "POST":
-        nazar_form=NazarForm(request.POST or None)
+        nazar_form=NazarForm(request.POST)
         nazar_form.save()
         messages.success(request, ":) نظر شما با موفقیت ثبت شد  ")
-        redirect("music:home")
-
+        nazar_form = NazarForm()
 
     # showing the comments
     nazarat = CommentDb.objects.all()
@@ -59,8 +57,7 @@ def ahang_detail(request,id=None):
     }
     return render(request,'main/ahang_detail.html',context)
 
-    
-    
+
 def upload_music_form(request):
     form = AhangUplaodingForm()
     if request.method == "POST":
