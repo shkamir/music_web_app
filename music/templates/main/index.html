@@ -15,13 +15,17 @@
 <body>
     {% block content %}
     <div class="container-fluid bg-primary">
+    <br />
+    <a class="btn btn-block btn-dark" href="{% url 'music:upload' %}"> آپلود آهنگ </a>
+    <br />
         {% for ahang in ahangha %}
+        {% if ahang.isAgreed %}
         <ul class="list-group text-secondry">
             <li class="list-group-item text-center text-white bg-dark">{{ahang.author}}</li>
             <li class="list-group-item text-center text-white bg-dark">{{ahang.description|safe|truncatechars_html:120}}</li>
             <li class="list-group-item text-center text-white bg-dark"><a href="{{ahang.get_absolute_url}}"> ادامه مطلب </a></li>
         </ul>
-        <br /> {% endfor %}
+        <br /> {% endif %}{% endfor %}
     </div>
     {% endblock %}
 </body>
