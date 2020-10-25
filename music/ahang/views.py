@@ -61,7 +61,7 @@ def ahang_detail(request,id=None):
 def upload_music_form(request):
     # ISSUE: file not uploading
     if request.method == "POST":
-        form = AhangUplaodingForm(request.POST or None)
+        form = AhangUplaodingForm(request.POST, request.FILES or None)
         if form.is_valid():
             form.save()
             messages.success(request, "آهنگ شما با موفقیت ثبت شد و پس از بازرسی در سایت قرار میگیرد")
