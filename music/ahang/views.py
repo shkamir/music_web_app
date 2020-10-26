@@ -32,7 +32,7 @@ def ahang_detail(request,id=None):
     
     
     
-    ahang = get_object_or_404(Ahang,id=id)
+    ahang = get_object_or_404(Ahang,id=id, isAgreed=True)
     
     esme_ahang = f"{ahang.author}\t-\t{ahang.ahang_esm}"
     
@@ -88,7 +88,7 @@ def search(request):
     button = request.GET.get('submitbutton')
     if query is not None:
         lookup = Q(author__icontains=query) | Q(description__icontains=query) | Q(ahang_esm__icontains=query)
-        result = Ahang.objects.filter(lookup).distinct()
+        result = Ahang.objects.filter(lookup, isAgreed=True).distinct()
         context = {
             "result": result,
             "submit": button

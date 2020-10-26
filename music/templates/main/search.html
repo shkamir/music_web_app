@@ -1,23 +1,35 @@
 {% extends 'main/index.html' %}
 {% block content %}
-    <div class="container" style="text-align: center;">
+    <div class="container align-content-center text-center">
+
         <form action="{% url 'music:search' %}" method="get">
-            <input type="text" required name="q" value="{{ request.GET.q }}">
-            <button type="submit" name="submitbutton" value="جستجو">
+            <label for="q">
+                جستجو
+            </label>
+            <input type="text" required name="q" value="{{ request.GET.q }}" class="form-control-sm">
+            <br>
+    
+            <button type="submit" name="submitbutton" value="جستجو" class="btn btn-dark">
                 Search
             </button>
+            <br />
+            <br />
         </form>
     </div>
+   <div class="container-xl btn-group-lg">
+    <div class="col-sm-7 bg-dark text-white"> 
     {% if submit == "جستجو" and request.GET.q != "" %}
         {% if result %}
             {% for r in result %}
                 {{ r.author }}
                 <br>
-                {{ r.description|safe }}
+                {{ r.description|safe|truncatechars_html:100 }}
                 <a href="{{ r.get_absolute_url }}"> ادامه</a>
             {% endfor %}
         {% else %}
             not found
         {% endif %}
     {% endif %}
+        </div>
+    </div>
 {% endblock %}
