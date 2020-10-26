@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Ahang, CommentDb
 from .forms import NazarForm, AhangUplaodingForm
 from django.contrib import messages
+from django.db.models import Q
 def index(request):
     ahangha = Ahang.objects.all().order_by('-id')
     context = {
@@ -79,3 +80,18 @@ def upload_music_form(request):
         "form": form
     }
     return render(request, "main/upload.html", context)
+
+
+def search(request):
+    # gets q in address bar
+    query = request.GET.get('q')
+    button = request.GET.get('submitbutton')
+    if query is not None:
+        lookup = Q(author__icontains=query) | Q(description__icontains=query) | Q(ahang_esm__icontains=query)
+        result = Ahang.objects.filter(lookup).distinct()
+        context = {
+            "result": result,
+            "submit": button
+        }
+        return render(request, "main/search.html", context)
+    return render(request, "main/search.html")

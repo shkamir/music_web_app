@@ -1,0 +1,23 @@
+{% extends 'main/index.html' %}
+{% block content %}
+    <div class="container" style="text-align: center;">
+        <form action="{% url 'music:search' %}" method="get">
+            <input type="text" required name="q" value="{{ request.GET.q }}">
+            <button type="submit" name="submitbutton" value="جستجو">
+                Search
+            </button>
+        </form>
+    </div>
+    {% if submit == "جستجو" and request.GET.q != "" %}
+        {% if result %}
+            {% for r in result %}
+                {{ r.author }}
+                <br>
+                {{ r.description|safe }}
+                <a href="{{ r.get_absolute_url }}"> ادامه</a>
+            {% endfor %}
+        {% else %}
+            not found
+        {% endif %}
+    {% endif %}
+{% endblock %}
