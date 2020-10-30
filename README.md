@@ -1,5 +1,5 @@
 # this is going to be a music download web app :D
-#### just for practice 
+#### just for the  FUN :D
 
 #### i dont know why i uploaded the database :) just ignore that :D
 
