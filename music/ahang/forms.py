@@ -22,7 +22,7 @@ class AhangUplaodingForm(ModelForm):
         widget=forms.TextInput(
             attrs={"placeholder":"اسم خواننده", "class":"form-control"}
         ),
-        required=False,
+        required=True,
     )
     description = forms.CharField(
         label="متن اهنگ",
@@ -46,7 +46,7 @@ class AhangUplaodingForm(ModelForm):
         widget=forms.FileInput(
             attrs={"placeholder":"فایل آهنگ", "class":"form-control-file"}
         ),
-        required=False,
+        required=True,
     )
     class Meta:
         model = Ahang
@@ -54,6 +54,47 @@ class AhangUplaodingForm(ModelForm):
 
 class SignUpForm(UserCreationForm):
     """ register's a user """
+    first_name = forms.CharField(
+        label=" اسم",
+        label_suffix="",
+        widget=forms.TextInput(
+            attrs={"placeholder":"اسم ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    username = forms.CharField(
+        label=" نام کاربری",
+        label_suffix="",
+        widget=forms.TextInput(
+            attrs={"placeholder":"نام کاربری ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    email = forms.EmailField(
+        label=" ایمیل",
+        label_suffix="",
+        widget=forms.EmailInput(
+            attrs={"placeholder":"ایمیل ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    password1 = forms.CharField(
+        label=" گذر واژه",
+        label_suffix="",
+        widget=forms.PasswordInput(
+            attrs={"placeholder":"گذر واژه ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    
+    password2 = forms.CharField(
+        label="  تایید گذر واژه",
+        label_suffix="",
+        widget=forms.PasswordInput(
+            attrs={"placeholder":"  تایید گذر واژه ", "class":"form-control"}
+        ),
+        required=True,
+    )
     class Meta:
         model = User
         fields = (
