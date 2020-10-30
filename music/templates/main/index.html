@@ -12,16 +12,17 @@
     </title>
 </head>
 
-<body>
+<body dir="rtl">
+
     {% block content %}
     <div class="container-fluid bg-primary">
     <br />
     {% include 'main/search.html' %}
-    
+
     <a class="btn btn-block btn-dark" href="{% url 'music:register' %}"> ثبت نام  </a>
     <br />
 
-    
+
     <a class="btn btn-block btn-dark" href="{% url 'music:upload' %}"> آپلود آهنگ </a>
     <br />
 
@@ -36,5 +37,4 @@
     </div>
     {% endblock %}
 </body>
-
 </html>
