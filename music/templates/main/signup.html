@@ -1,13 +1,21 @@
-{% extends 'index.html' %}
+{% extends 'main/index.html' %}
 {% block title %}
     SignUp
 {% endblock %}
 {% block content %}
     <div class="container">
         <div class="align-content-center">
-            <form action="" method="post">
+            {% if messages %}
+                {% for message in messages %}
+                    <span class="alert alert-primary">{{message}}</span>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'music:register' %}" method="post">
                 {% csrf_token %}
-                <!-- TODO: form -->
+                {{form.as_p}}
+                <button type="submit">
+                    Register
+                </button>
             </form>
         </div>
     </div>

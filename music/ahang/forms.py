@@ -63,6 +63,9 @@ class SignUpForm(UserCreationForm):
             "password1",
             "password2",
         )
+        help_texts = {
+            "username": None
+        }
     
     
     

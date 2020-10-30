@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Ahang, CommentDb
-from .forms import NazarForm, AhangUplaodingForm
+from .forms import NazarForm, AhangUplaodingForm, SignUpForm
 from django.contrib import messages
 from django.db.models import Q
 def index(request):
@@ -95,3 +95,18 @@ def search(request):
         }
         return render(request, "main/search.html", context)
     return render(request, "main/search.html")
+
+
+def register(request):
+    """ handles user creation form """
+    form = SignUpForm()
+    if request.method == "POST":
+        form = SignUpForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "با موفقیت ثبت شد :)")
+            form = SignUpForm()
+        else:
+            messages.error(request, " :(  متاسفانه فرم شما ثبت نشد لطفا بعدا امتحان کنید")
+        
+    return render(request, "main/signup.html", {"form":form})
