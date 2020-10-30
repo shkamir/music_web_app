@@ -1,8 +1,11 @@
 from django.forms import ModelForm
 from django import forms
 from .models import CommentDb, Ahang
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class NazarForm(ModelForm):
+    """ contact form """
     comment = forms.CharField(label="نظر ", label_suffix="")
     user_name = forms.CharField(label="یوزر نیم", label_suffix="")
     email = forms.EmailField(label="ایمیل", label_suffix="")
@@ -12,7 +15,7 @@ class NazarForm(ModelForm):
         fields = ("comment","user_name", "email",)
         widgets = {"class":"form-control"}
 class AhangUplaodingForm(ModelForm):
-    # ISSUE: file not uploading
+    """ let user upload a music """
     author = forms.CharField(
         label="اسم خواننده",
         label_suffix="",
@@ -48,3 +51,21 @@ class AhangUplaodingForm(ModelForm):
     class Meta:
         model = Ahang
         fields = ("author","description", "ahang_esm", "ahang_file",)
+
+class SignUpForm(UserCreationForm):
+    """ register's a user """
+    class Meta:
+        model = User
+        fields = (
+            "first_name",
+            "username",
+            "email",
+            "password1",
+            "password2",
+        )
+    
+    
+    
+    
+    
+    
