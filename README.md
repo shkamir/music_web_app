@@ -3,8 +3,8 @@
 
 #### i dont know why i uploaded the database :) just ignore that :D
 
-# How to Test :)
-#-------------------------------------------
+# - How to Test :)
+# -------------------------------------------
 - virtualenv -p python3 venv
 - source venv/bin/activate
 - pip3 install -r requirements.txt
