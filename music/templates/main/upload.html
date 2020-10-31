@@ -4,8 +4,15 @@
 {% endblock title %}
 
 {% block content %}
-{% comment %} file not uploading {% endcomment %}
-   {% if messages %}
+<script>
+    msg = "توجه داشته باشید که آهنگ های پولی مورد تایید قرار نمیگیرند با تشکر از همکاری شما"
+    function warning(licence_msg){
+        confirm(licence_msg)
+    }
+    warning(msg);
+</script>
+
+{% if messages %}
    {% for m in messages %}
     <div class="container py-5">  
     <div class="alert alert-success">  

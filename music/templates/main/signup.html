@@ -3,7 +3,16 @@
     SignUp
 {% endblock %}
 {% block content %}
+    <script>
+        let warning = "توجه کنید که اهنگ هایی که دارای لایسینس هستند مورد تایید قرار نمیگیرند ممنون از شما دوست عزیز بابت توجه به این موضوع ."
+        function licenceWarning(){
+            alert(warning)
+        }
+    </script>
     <div class="container">
+        <script>
+            licenceWarning();
+        </script>
         <div class="align-content-center">
            <div class="text-center">
                 {% if messages %}
