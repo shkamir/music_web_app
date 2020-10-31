@@ -15,6 +15,8 @@ class Ahang(models.Model):
     def get_absolute_url(self):
         return reverse("music:detail", args=[str(self.id)])
 
+    def __str__(self):
+        return "{author}-{ahang_esm}-{id}".format(author=self.author, ahang_esm=self.ahang_esm,id=self.id)
     class Meta:
         verbose_name = 'Music'
         verbose_name_plural = "Music's"
