@@ -27,3 +27,8 @@ class CommentDb(models.Model):
     comment = models.TextField()
     email = models.EmailField(default="example@example.com")
     isRead = models.BooleanField(default=False)
+    def __str__(self):
+        return "{username}-{email}".format(username=self.user_name, email=self.email)
+    class Meta:
+        verbose_name = "Contact Form"
+        verbose_name_plural = "Contact's"
