@@ -108,5 +108,6 @@ def register(request):
             form = SignUpForm()
         else:
             messages.error(request, " :(  متاسفانه فرم شما ثبت نشد لطفا بعدا امتحان کنید")
+            form = SignUpForm()
         
     return render(request, "main/signup.html", {"form":form})
