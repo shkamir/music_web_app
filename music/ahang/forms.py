@@ -117,7 +117,7 @@ class LoginForm(AuthenticationForm):
         ),
         required=True,
     )
-    password1 = forms.CharField(
+    password = forms.CharField(
         label=" گذر واژه",
         label_suffix="",
         widget=forms.PasswordInput(
@@ -129,7 +129,7 @@ class LoginForm(AuthenticationForm):
         model = User
         fields = (
             "username",
-            "password"
+            "password",
         )    
     
     

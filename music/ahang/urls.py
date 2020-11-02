@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^upload$', views.upload_music_form, name='upload'),
     url(r'^search$', views.search, name='search'),
     url(r'^signup$', views.register, name='register'),
+    url(r'^login$', views.login_view, name='login'),
     url(r'^edame/(?P<id>[0-9]{1,1000})*/$', views.ahang_detail, name='detail'),
 ]
 

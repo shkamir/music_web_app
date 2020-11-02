@@ -1,6 +1,6 @@
 {% extends 'main/index.html' %}
 {% block title %}
-    SignUp
+    ورود                
 {% endblock %}
 {% block content %}
 
@@ -13,11 +13,11 @@
                     {% endfor %}
                 {% endif %}
            </div>
-            <form action="{% url 'music:register' %}" method="post">
+            <form action="{% url 'music:login' %}" method="post">
                 {% csrf_token %}
                 {{form.as_p}}
                 <button type="submit" class="btn btn-primary">
-                    Register
+                    ورود
                 </button>
             </form>
         </div>

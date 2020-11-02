@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Ahang, CommentDb
-from .forms import NazarForm, AhangUplaodingForm, SignUpForm
+from .forms import LoginForm, NazarForm, AhangUplaodingForm, SignUpForm
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth import authenticate, login
+
+
+
 def index(request):
     ahangha = Ahang.objects.all().order_by('-id')
     context = {
@@ -111,3 +115,24 @@ def register(request):
             form = SignUpForm()
         
     return render(request, "main/signup.html", {"form":form})
+
+    
+    
+def login_view(request):
+    """ handle's User Login """
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(username=username, password=password)
+        if user.is_active:
+            login(request, user)
+            messages.success(request, "با موفقیت ثبت شد :)")
+            return redirect("music:home")
+        else:
+            messages.error(request, " :(  بعدا امتحان کنید")
+            form = LoginForm()
+            return render(request, 'main/login.html',{"form":form})
+
+    form = LoginForm()    
+    return render(request, 'main/login.html',{"form":form})
+    
