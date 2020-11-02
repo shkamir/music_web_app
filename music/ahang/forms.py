@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import CommentDb, Ahang
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 class NazarForm(ModelForm):
@@ -108,8 +108,29 @@ class SignUpForm(UserCreationForm):
             "username": None
         }
     
-    
-    
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label=" نام کاربری",
+        label_suffix="",
+        widget=forms.TextInput(
+            attrs={"placeholder":"نام کاربری ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    password1 = forms.CharField(
+        label=" گذر واژه",
+        label_suffix="",
+        widget=forms.PasswordInput(
+            attrs={"placeholder":"گذر واژه ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    class Meta:
+        model = User
+        fields = (
+            "username",
+            "password"
+        )    
     
     
     
