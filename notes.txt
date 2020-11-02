@@ -1,0 +1,4 @@
+- Login Form - DONE
+- Login after signin 
+- Redirect to home
+- logout
