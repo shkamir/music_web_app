@@ -3,7 +3,7 @@ from .models import Ahang, CommentDb
 from .forms import LoginForm, NazarForm, AhangUplaodingForm, SignUpForm
 from django.contrib import messages
 from django.db.models import Q
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 
@@ -140,4 +140,8 @@ def login_view(request):
 
     form = LoginForm()    
     return render(request, 'main/login.html',{"form":form})
-    
+
+
+def logout_user(request):
+    logout(request)
+    return redirect("music:home")

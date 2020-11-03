@@ -31,6 +31,9 @@
     <br />
     <a class="btn btn-block btn-dark" href="{% url 'music:login' %}"> ورود </a>
     <br />
+    {% else %}
+    <a class="btn btn-block btn-dark" href="{% url 'music:logout' %}"> خروج </a>
+    <br />
     {% endif %}
     <a class="btn btn-block btn-dark" href="{% url 'music:upload' %}"> آپلود آهنگ </a>
     <br />

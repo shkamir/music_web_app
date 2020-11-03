@@ -1,5 +1,5 @@
 - Login Form - DONE
 - Login after signin - DONE
 - Redirect to home - DONE
-- logout
+- logout - DONE
 - filter uploding file to only upload audio type's
