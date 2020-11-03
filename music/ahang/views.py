@@ -108,8 +108,13 @@ def register(request):
         form = SignUpForm(request.POST or None)
         if form.is_valid():
             form.save()
+            this_username = form.cleaned_data.get("username")
+            this_password = form.cleaned_data.get("password1")
+            user = authenticate(username=this_username, password=this_password)
+            login(request, user)
             messages.success(request, "با موفقیت ثبت شد :)")
             form = SignUpForm()
+            return redirect("music:home")
         else:
             messages.error(request, " :(  متاسفانه فرم شما ثبت نشد لطفا بعدا امتحان کنید")
             form = SignUpForm()

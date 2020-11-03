@@ -15,12 +15,21 @@
 <body>
 
     {% block content %}
+    <div class="text-center">
+        {% if messages %}
+            {% for message in messages %}
+                <span class="alert alert-primary">{{message}}</span>
+            {% endfor %}
+        {% endif %}
+   </div>
     <div class="container-fluid bg-primary">
     <br />
     {% include 'main/search.html' %}
 
     {% if not request.user.is_authenticated %}
     <a class="btn btn-block btn-dark" href="{% url 'music:register' %}"> ثبت نام  </a>
+    <br />
+    <a class="btn btn-block btn-dark" href="{% url 'music:login' %}"> ورود </a>
     <br />
     {% endif %}
     <a class="btn btn-block btn-dark" href="{% url 'music:upload' %}"> آپلود آهنگ </a>
