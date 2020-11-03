@@ -20,7 +20,7 @@ class Ahang(models.Model):
     class Meta:
         verbose_name = 'Music'
         verbose_name_plural = "Music's"
-
+    
 class CommentDb(models.Model):
     # text, is read, date
     user_name= models.CharField(max_length=200, default="nUmberX")

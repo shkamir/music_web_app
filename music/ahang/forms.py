@@ -3,7 +3,6 @@ from django import forms
 from .models import CommentDb, Ahang
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-
 class NazarForm(ModelForm):
     """ contact form """
     comment = forms.CharField(label="نظر ", label_suffix="")
@@ -51,6 +50,16 @@ class AhangUplaodingForm(ModelForm):
     class Meta:
         model = Ahang
         fields = ("author","description", "ahang_esm", "ahang_file",)
+    
+    def clean_ahang_file(self):
+        # ISSUE: getting error even file has mp3 ext
+        ahang = self.cleaned_data.get("ahang_file")
+        mp3 = ".mp3"
+        if not mp3 in ahang:
+            print (ahang)
+            raise forms.ValidationError("فرمت فایل مناسب نیست")
+        return ahang
+
 
 class SignUpForm(UserCreationForm):
     """ register's a user """
