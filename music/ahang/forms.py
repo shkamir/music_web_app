@@ -3,16 +3,17 @@ from django import forms
 from .models import CommentDb, Ahang
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-class NazarForm(ModelForm):
-    """ contact form """
-    comment = forms.CharField(label="نظر ", label_suffix="")
-    user_name = forms.CharField(label="یوزر نیم", label_suffix="")
-    email = forms.EmailField(label="ایمیل", label_suffix="")
 
+
+
+class CommentForm(forms.ModelForm):
     class Meta:
-        model=CommentDb
-        fields = ("comment","user_name", "email",)
-        widgets = {"class":"form-control"}
+        model = CommentDb
+        fields = ('name', 'email', 'body')
+        
+        
+        
+        
 class AhangUplaodingForm(ModelForm):
     """ let user upload a music """
     author = forms.CharField(

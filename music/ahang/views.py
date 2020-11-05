@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Ahang, CommentDb
-from .forms import LoginForm, NazarForm, AhangUplaodingForm, SignUpForm
+from .forms import LoginForm, CommentForm, AhangUplaodingForm, SignUpForm
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
@@ -33,34 +33,33 @@ def index(request):
 #     return render(request,'main/ahang_detail.html',context)
 
 def ahang_detail(request,id=None):
-    
-    
-    
-    ahang = get_object_or_404(Ahang,id=id, isAgreed=True)
-    
+    template_name = 'main/ahang_detail.html'
+    ahang = get_object_or_404(Ahang,id=id, isAgreed=True)    
     esme_ahang = f"{ahang.author}\t-\t{ahang.ahang_esm}"
     
+    comments = ahang.comments.filter(active=True)
     
-    
-    nazar_form = NazarForm()    
-    # saving comments in (_  DB  _) comment's
-    if request.method == "POST":
-        nazar_form=NazarForm(request.POST)
-        nazar_form.save()
-        messages.success(request, ":) نظر شما با موفقیت ثبت شد  ")
-        nazar_form = NazarForm()
+    new_comment = None
+    if request.method == 'POST':
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
 
-    # showing the comments
-    nazarat = CommentDb.objects.all()
-
-
+                # Create Comment object but don't save to database yet
+                new_comment = comment_form.save(commit=False)
+                # Assign the current post to the comment
+                new_comment.post = ahang
+                # Save the comment to the database
+                new_comment.save()
+    else:
+        comment_form = CommentForm()
     context = {
-         "ahang":ahang, 
-         "nazarat": nazarat,
-         "nazar_form": nazar_form,
-         "title":esme_ahang,
+        "ahang":ahang,
+        "comments": comments,
+        "new_comment": new_comment,
+        "comment_form": comment_form,
+        "title": esme_ahang
     }
-    return render(request,'main/ahang_detail.html',context)
+    return render(request,template_name,context)
 
 
 def upload_music_form(request):
