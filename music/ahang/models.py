@@ -23,14 +23,15 @@ class Ahang(models.Model):
         verbose_name_plural = "Music's"
     
 class CommentDb(models.Model):
-    # text, is read, date
-    user_name= models.CharField(max_length=200, default="nUmberX")
-    comment = models.TextField()
-    email = models.EmailField(default="example@example.com")
-    isRead = models.BooleanField(default=False)
-    # ahang = models.ForeignKey(Ahang, on_delete=models.CASCADE,null=True, blank=True)
-    def __str__(self):
-        return "{username}-{email}".format(username=self.user_name, email=self.email)
+    ahnag = models.ForeignKey(Ahang,on_delete=models.CASCADE,related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
     class Meta:
-        verbose_name = "Contact Form"
-        verbose_name_plural = "Contact's"
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
