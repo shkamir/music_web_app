@@ -1,12 +1,13 @@
 from django.db import models
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
+from .validators import validate_file
 class Ahang(models.Model):
     # author, description, ahang, publish and update date
     author = models.CharField(max_length=200, blank=False, null=False, unique=False)
     description = RichTextUploadingField()
     ahang_esm = models.CharField(max_length=500, default=None, unique=False)
-    ahang_file = models.FileField(upload_to='Musics/')
+    ahang_file = models.FileField(upload_to='Musics/', validators=[validate_file])
     publishDate = models.DateField(auto_now_add=True)
     updateDate = models.DateField(auto_now=True)
     # user is able to upload music without logging in but music has to be checked by admin
