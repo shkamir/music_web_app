@@ -51,15 +51,6 @@ class AhangUplaodingForm(ModelForm):
         model = Ahang
         fields = ("author","description", "ahang_esm", "ahang_file",)
     
-    # def clean_ahang_file(self):
-    #     # ISSUE: getting error even file has mp3 ext
-    #     ahang = self.cleaned_data.get("ahang_file")
-    #     mp3 = ".mp3"
-    #     if mp3 not in ahang:
-    #         print (ahang)
-    #         raise forms.ValidationError("فرمت فایل مناسب نیست")
-    #     return ahang
-
 
 class SignUpForm(UserCreationForm):
     """ register's a user """
