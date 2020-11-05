@@ -28,6 +28,7 @@ class CommentDb(models.Model):
     comment = models.TextField()
     email = models.EmailField(default="example@example.com")
     isRead = models.BooleanField(default=False)
+    # ahang = models.ForeignKey(Ahang, on_delete=models.CASCADE,null=True, blank=True)
     def __str__(self):
         return "{username}-{email}".format(username=self.user_name, email=self.email)
     class Meta:
