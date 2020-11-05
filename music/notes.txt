@@ -3,3 +3,9 @@
 - Redirect to home - DONE
 - logout - DONE
 - filter uploding file to only upload audio type's - DONE
+
+- there's a bug in comment below musics the comments go for every music
+
+-------------------------------------------
+- create a navbar
+- user forgotten password
