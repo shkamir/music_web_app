@@ -55,7 +55,7 @@ class AhangUplaodingForm(ModelForm):
         # ISSUE: getting error even file has mp3 ext
         ahang = self.cleaned_data.get("ahang_file")
         mp3 = ".mp3"
-        if not mp3 in ahang:
+        if mp3 not in ahang:
             print (ahang)
             raise forms.ValidationError("فرمت فایل مناسب نیست")
         return ahang
