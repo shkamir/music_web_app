@@ -7,6 +7,28 @@ from django.contrib.auth.models import User
 
 
 class CommentForm(forms.ModelForm):
+    name = forms.CharField(
+        label="اسم ",
+        label_suffix="",
+        widget=forms.TextInput(attrs={"class":"form-control"}),
+        required=True
+    )
+    email = forms.EmailField(
+        label=" ایمیل",
+        label_suffix="",
+        widget=forms.EmailInput(
+            attrs={"placeholder":"ایمیل ", "class":"form-control"}
+        ),
+        required=True,
+    )
+    body = forms.CharField(
+        label="متن اهنگ",
+        label_suffix="",
+        widget=forms.Textarea(
+            attrs={"placeholder":"متن", "class":"form-control"}
+        ),
+        required=True,    
+    )    
     class Meta:
         model = CommentDb
         fields = ('name', 'email', 'body')
