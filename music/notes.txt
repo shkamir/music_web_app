@@ -8,4 +8,5 @@
 
 -------------------------------------------
 - create a navbar - working
+- make  comment's look better
 - user forgotten password
