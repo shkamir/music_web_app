@@ -32,6 +32,20 @@
 
           </div>
         </div>
+        <h2 dir="rtl" style="text-align: right; margin-right: 100px;">نظرات</h2>
+{% for comment in comments %}
+      
+<div class="text-center">             
+
+  <strong><p> {{ comment.name }} </p><p> {{ comment.created_on }} </p></strong>
+      <span class="text-decoration-none">  
+        {{ comment.body }}
+      </span>
+      </div>
+
+{% endfor %}
+
+
         <div class="col-md-8 card mb-4  mt-3 ">
           <div class="card-body">
             {% if new_comment %}
@@ -49,28 +63,7 @@
 
                 </span>
 
-                {% for comment in comments %}
-                <div class="btn">
-                <div class="container-fluid text-black-50 content-align-center text-center">
-                  <span class="col-sm-3">
-                    {{ comment.name }} از طرف 
-                    <br>
-                    <span>
-                      {{ comment.created_on }} :فرستاده شده در
-                      
-                    </span>
-                    <br>
-                  </span>
-                  <br>
-                  <h5 class="container-fluid text-black-50 text-dark">:متن پیام</h5>
-                <div class="container-fluid text-black-50 content-align-center text-center">
 
-                  {{ comment.body | linebreaks }}
-                  
-                </div>
-              </div>
-                </div>
-                {% endfor %}
             </div>
     </center>
 </div>
