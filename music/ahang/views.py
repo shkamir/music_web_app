@@ -33,7 +33,6 @@ def index(request):
 #     return render(request,'main/ahang_detail.html',context)
 
 def ahang_detail(request,id=None):
-    template_name = 'main/ahang_detail.html'
     ahang = get_object_or_404(Ahang,id=id, isAgreed=True)    
     esme_ahang = f"{ahang.author}\t-\t{ahang.ahang_esm}"
     
@@ -41,13 +40,12 @@ def ahang_detail(request,id=None):
     
     new_comment = None
     if request.method == 'POST':
-            comment_form = CommentForm(data=request.POST)
+            comment_form = CommentForm(request.POST)
             if comment_form.is_valid():
-
                 # Create Comment object but don't save to database yet
                 new_comment = comment_form.save(commit=False)
-                # Assign the current post to the comment
-                new_comment.post = ahang
+                # Assign the current ahang to the comment
+                new_comment.ahang = ahang
                 # Save the comment to the database
                 new_comment.save()
     else:
@@ -59,7 +57,7 @@ def ahang_detail(request,id=None):
         "comment_form": comment_form,
         "title": esme_ahang
     }
-    return render(request,template_name,context)
+    return render(request,'main/ahang_detail.html',context)
 
 
 def upload_music_form(request):

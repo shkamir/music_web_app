@@ -23,7 +23,7 @@ class Ahang(models.Model):
         verbose_name_plural = "Music's"
     
 class CommentDb(models.Model):
-    ahnag = models.ForeignKey(Ahang,on_delete=models.CASCADE,related_name='comments', null=True, blank=True)
+    ahang = models.ForeignKey(Ahang,on_delete=models.CASCADE,related_name='comments', null=True)
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
