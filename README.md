@@ -15,8 +15,6 @@
 
 # TODO
 
-- make login page and after registerring user's login automaticly 
-
 - for uploading music user's email have to be valid [ send submit code or link ]
 
 - make this ugly pages look nice :/
