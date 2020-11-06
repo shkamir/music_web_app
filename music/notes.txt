@@ -4,8 +4,8 @@
 - logout - DONE
 - filter uploding file to only upload audio type's - DONE
 
-- there's a bug in comment below musics the comments go for every music - working
+- there's a bug in comment below musics the comments go for every music - DONE
 
 -------------------------------------------
-- create a navbar
+- create a navbar - working
 - user forgotten password
