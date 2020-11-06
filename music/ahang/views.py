@@ -128,10 +128,9 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user.is_active:
             login(request, user)
-            messages.success(request, "با موفقیت ثبت شد :)")
-            return redirect("music:home")
+            messages.success(request, f":) عزیز {username} خوش آمدید")
         else:
-            messages.error(request, " :(  بعدا امتحان کنید")
+            messages.error(request, " :(  بعدا امتحان کنید {} عزیز")
             form = LoginForm()
             return render(request, 'main/login.html',{"form":form})
 
@@ -141,4 +140,5 @@ def login_view(request):
 
 def logout_user(request):
     logout(request)
+    messages.success(request, "با موفقیت خارج شدید")
     return redirect("music:home")

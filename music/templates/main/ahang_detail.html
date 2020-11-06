@@ -27,8 +27,8 @@
             </div>
             <br>
             <p></p>
-            <h2>{{ comments.count }} comments available</h2>
-
+            <h2 style="direction: rtl;">  {{ comments.count }}   نظر موجود است</h2>
+            <br><br>
 
           </div>
         </div>
@@ -39,22 +39,36 @@
               نظر شما در حال ثبت است. ممنون از شکیبایی شما 
             </div>
             {% else %}
-            <h3>Leave a comment</h3>
+            <h3>نظر بدهید</h3>
             <form method="post" style="margin-top: 1.3em;">
               {% csrf_token %}
               {{ comment_form.as_p }}
-              <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+              <button type="submit" class="btn btn-primary  btn-lg">ثبت</button>
             </form>
+            <br><br>
+
                 </span>
+
                 {% for comment in comments %}
-                <div class="hljs-comment">
-                  <p>
-                    {{ comment.name }}
+                <div class="btn">
+                <div class="container-fluid text-black-50 content-align-center text-center">
+                  <span class="col-sm-3">
+                    {{ comment.name }} از طرف 
+                    <br>
                     <span>
-                      {{ comment.created_on }}
+                      {{ comment.created_on }} :فرستاده شده در
+                      
                     </span>
-                  </p>
+                    <br>
+                  </span>
+                  <br>
+                  <h5 class="container-fluid text-black-50 text-dark">:متن پیام</h5>
+                <div class="container-fluid text-black-50 content-align-center text-center">
+
                   {{ comment.body | linebreaks }}
+                  
+                </div>
+              </div>
                 </div>
                 {% endfor %}
             </div>

@@ -7,6 +7,6 @@
 - there's a bug in comment below musics the comments go for every music - DONE
 
 -------------------------------------------
-- create a navbar - working
-- make  comment's look better
+- create a navbar - DONE
+- make  comment's look better - DONE
 - user forgotten password
