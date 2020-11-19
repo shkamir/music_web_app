@@ -16,6 +16,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+import json
+with open(Path.joinpath(BASE_DIR, 'config.json')) as secrets:
+    config = json.load(secrets)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -133,3 +137,19 @@ CKEDITOR_CONFIGS = {
         "toolbar": "advanced",
     },
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = Path.joinpath(BASE_DIR / 'emails')
+
+
+EMAIL_USE_TLS = True
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+
+# email user name
+EMAIL_HOST_USER = config["EMAIL_HOST_USER"]
+
+# email password
+EMAIL_HOST_USER = config["EMAIL_HOST_PASSWORD"]

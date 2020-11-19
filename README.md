@@ -15,7 +15,9 @@
 
 # TODO
 
-- for uploading music user's email have to be valid [ send submit code or link ]
+- user password reset
+
+- user's email have to be valid 
 
 - make this ugly pages look nice :/
 
